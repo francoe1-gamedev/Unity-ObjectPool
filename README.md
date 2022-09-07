@@ -1,7 +1,7 @@
 # Unity-ObjectPool
 Pool object system for Unity3D
 
-Spawn and Depawn object easely
+Spawn and Depawn object easily
 
 Spawn
 ```csharp
@@ -57,3 +57,35 @@ public class Projectile2 : MonoBehaviour, IPoolEntity
     }
 }
 ```
+
+Pre-spawn 
+```csharp
+[SerializeField] private Transform _projectilePrefab;
+
+private void Start()
+{
+    _projectilePrefab.PoolBuffer(30);
+}
+```
+
+Depawn All
+```csharp
+[SerializeField] private Transform _projectilePrefab;
+
+private void Start()
+{
+    _projectilePrefab.PoolClear();
+}
+``` 
+
+Depawn Silent
+```csharp
+[SerializeField] private Transform _projectilePrefab;
+
+private void Start()
+{
+    Transform projectile = _projectilePrefab.PoolSpawn();
+    projectile.PoolDepawn(true);
+}
+``` 
+
