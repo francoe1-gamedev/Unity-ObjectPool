@@ -33,7 +33,7 @@ namespace Tank
 }
 ```
 
-Depawn
+Despawn
 ```csharp
 using UFR.ObjectPool;
 using UnityEngine;
@@ -45,7 +45,7 @@ public class Projectile2 : MonoBehaviour, IPoolEntity
     private void Update()
     {
         transform.position = transform.position + _speed * Time.deltaTime * (transform.forward + new Vector3(Random.Range(-1f, 1), Random.Range(-1f, 1), Random.Range(-1f, 1)));
-        if (transform.position.magnitude > 100) gameObject.PoolDepawn();
+        if (transform.position.magnitude > 100) gameObject.PoolDespawn();
     }
 
     void IPoolEntity.Spawn(bool silent)
@@ -54,7 +54,7 @@ public class Projectile2 : MonoBehaviour, IPoolEntity
         _speed = Random.Range(20, 60);
     }
 
-    void IPoolEntity.Depawn(bool silent)
+    void IPoolEntity.Despawn(bool silent)
     {
         gameObject.SetActive(false);
         gameObject.GetComponentInChildren<TrailRenderer>().Clear();
@@ -72,7 +72,7 @@ private void Start()
 }
 ```
 
-Depawn All
+Despawn All
 ```csharp
 [SerializeField] private Transform _projectilePrefab;
 
@@ -82,14 +82,14 @@ private void Start()
 }
 ``` 
 
-Depawn Silent
+Despawn Silent
 ```csharp
 [SerializeField] private Transform _projectilePrefab;
 
 private void Start()
 {
     Transform projectile = _projectilePrefab.PoolSpawn();
-    projectile.PoolDepawn(true);
+    projectile.PoolDespawn(true);
 }
 ``` 
 
