@@ -1,6 +1,12 @@
 # Unity-ObjectPool
 Pool object system for Unity3D
 
+# Install from Unity Package Manager
+[Unity Manual](https://docs.unity3d.com/Manual/upm-ui-giturl.html)
+```
+https://github.com/francoe1-gamedev/Unity-ObjectPool.git
+```
+
 Spawn
 ```csharp
 using UFR.ObjectPool;
