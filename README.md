@@ -1,8 +1,6 @@
 # Unity-ObjectPool
 Pool object system for Unity3D
 
-Spawn and Depawn object easily
-
 Spawn
 ```csharp
 using UFR.ObjectPool;
