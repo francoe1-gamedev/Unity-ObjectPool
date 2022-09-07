@@ -36,17 +36,17 @@ namespace UFR.ObjectPool
                 entity.hideFlags = HideFlags.HideInInspector;
                 entity.ReferenceType = _reference.GetType();
                 entity.ReferenceInstanceId = _reference.GetInstanceID();
-                entity.DepawnHandle = (x) =>
+                entity.DespawnHandle = (x) =>
                 {
                     entity.Recycle(x);
-                    Depawn(item);
+                    Despawn(item);
                 };
             }
             _used.Add(item);
             return item;
         }
 
-        public void Depawn(T obj)
+        public void Despawn(T obj)
         {
             if (_used.Remove(obj)) _free.Add(obj);
         }
@@ -57,8 +57,8 @@ namespace UFR.ObjectPool
             {
                 T item = _used.FirstOrDefault();
                 PoolEntity entity = item.ToGameObject().GetComponent<PoolEntity>();
-                if (entity != null) entity.DepawnHandle(true);
-                else Depawn(item);
+                if (entity != null) entity.DespawnHandle(true);
+                else Despawn(item);
             }
         }
     }

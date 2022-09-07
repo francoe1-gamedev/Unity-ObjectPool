@@ -8,9 +8,9 @@ namespace UFR.ObjectPool
         public int ReferenceInstanceId { get; set; }
         public System.Type ReferenceType { get; set; }
 
-        public delegate void DepawnDelegate(bool silent);
+        public delegate void DespawnDelegate(bool silent);
 
-        public DepawnDelegate DepawnHandle { get; set; }
+        public DespawnDelegate DespawnHandle { get; set; }
 
         public void Create(bool silent)
         {
@@ -21,7 +21,7 @@ namespace UFR.ObjectPool
         public void Recycle(bool silent)
         {
             foreach (IPoolEntity entity in gameObject.GetComponents<IPoolEntity>())
-                entity.Depawn(silent);
+                entity.Despawn(silent);
         }
     }
 }

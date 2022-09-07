@@ -23,7 +23,7 @@ namespace UFR.ObjectPool
             Pool<T> pool = obj.FindPool();
             Queue<T> items = new Queue<T>();
             while (items.Count < size) items.Enqueue(pool.Spawn(true));
-            while (items.Count > 0) items.Dequeue().PoolDepawn();
+            while (items.Count > 0) items.Dequeue().PoolDespawn();
         }
 
         public static void PoolClear<T>(this T obj) where T : Object
@@ -37,7 +37,7 @@ namespace UFR.ObjectPool
                 yield return obj.PoolSpawn();
         }
 
-        public static void PoolDepawn<T>(this T obj, bool silent = false) where T : Object
+        public static void PoolDespawn<T>(this T obj, bool silent = false) where T : Object
         {
             PoolEntity entity = obj.ToGameObject().GetComponent<PoolEntity>();
             if (entity == null)
@@ -45,7 +45,7 @@ namespace UFR.ObjectPool
                 Object.Destroy(obj);
                 return;
             }
-            entity.DepawnHandle(silent);
+            entity.DespawnHandle(silent);
         }
     }
 }

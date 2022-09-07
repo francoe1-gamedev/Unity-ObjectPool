@@ -4,6 +4,6 @@
     {
         void Spawn(bool silent);
 
-        void Depawn(bool silent);
+        void Despawn(bool silent);
     }
 }
