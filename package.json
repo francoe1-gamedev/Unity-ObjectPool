@@ -1,0 +1,7 @@
+{
+	"name": "com.franco-rosatto.object-pool",
+	"displayName": "ObjectPool",
+	"version": "1.0.0",
+	"description": "ObjectPool system for Unity3D",
+	"unity": "2019.3"
+}
